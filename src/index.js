@@ -82,7 +82,7 @@ function increment(ms) {
         requestId = requestAnimationFrame(increment);
     } else {
         requestAnimationFrame.cancel(requestId);
-        requestId = requestAnimationFrame(end);
+        setTimeout(end, 100);
     }
 }
 
