@@ -1,7 +1,7 @@
 var requestProgress = require("../src/index");
 
 
-var XMLHttpRequest = global.XMLHttpRequest;
+requestProgress.attachToGlobal();
 
 
 var div = document.getElementById("progress");

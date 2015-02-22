@@ -94,26 +94,40 @@ function end() {
     }
 }
 
-global.XMLHttpRequest = function() {
-    var xhr = new XMLHttpRequestPolyfill();
 
-    function onReadyStateChange() {
-        var state = +xhr.readyState;
+requestProgress.startRequest = function() {
+    requestStart();
+};
 
-        if (state === 1) {
-            requestStart();
-        } else if (state === 4) {
-            requestDone();
+requestProgress.finishRequest = function() {
+    requestDone();
+};
+
+requestProgress.attachToGlobal = function() {
+    function XMLHttpRequest() {
+        var xhr = new XMLHttpRequestPolyfill();
+
+        function onReadyStateChange() {
+            var state = +xhr.readyState;
+
+            if (state === 1) {
+                requestStart();
+            } else if (state === 4) {
+                requestDone();
+            }
         }
+
+        if (isFunction(xhr.addEventListener)) {
+            xhr.addEventListener("readystatechange", onReadyStateChange, false);
+        } else if (isFunction(xhr.attachEvent)) {
+            xhr.attachEvent("onreadystatechange", onReadyStateChange);
+        } else {
+            xhr.onreadystatechange = onReadyStateChange;
+        }
+
+        return xhr;
     }
 
-    if (isFunction(xhr.addEventListener)) {
-        xhr.addEventListener("readystatechange", onReadyStateChange, false);
-    } else if (isFunction(xhr.attachEvent)) {
-        xhr.attachEvent("onreadystatechange", onReadyStateChange);
-    } else {
-        xhr.onreadystatechange = onReadyStateChange;
-    }
-
-    return xhr;
+    XMLHttpRequest.prototype = XMLHttpRequestPolyfill.prototype;
+    global.XMLHttpRequest = XMLHttpRequest;
 };
