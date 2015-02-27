@@ -11,6 +11,9 @@
     "request_progress",
     "request_progress.js"
   ],
+  "scripts": {
+    "test": "comn -f test/index.js -o test/index.min.js"
+  },
   "author": "Nathan Faucett",
   "license": "BSD-2-Clause",
   "readmeFilename": "README.md",

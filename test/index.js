@@ -7,12 +7,16 @@ requestProgress.attachToGlobal();
 var div = document.getElementById("progress");
 
 
+requestProgress.element = div;
+
 requestProgress.on("start", function() {
     console.log("start");
+    console.time("progress");
 });
 requestProgress.on("end", function() {
     div.style.width = "0%";
     console.log("end");
+    console.timeEnd("progress");
 });
 requestProgress.on("update", function(percent) {
     div.style.width = (percent * 100) + "%";
@@ -32,8 +36,7 @@ function request() {
     (function doit() {
         makeRequest();
 
-        count++;
-        if (count !== 5) {
+        if (++count !== 5) {
             doit();
         }
     }());

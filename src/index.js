@@ -42,6 +42,7 @@ function requestStart() {
         ended = false;
         currentDelta = 0;
         requestProgress.emit("start");
+        setProgressFake(0.1);
     }
     startTime = time.now();
     totalRequests += 1;
@@ -50,6 +51,18 @@ function requestStart() {
 function requestDone() {
     completedRequests += 1;
     setProgress(completedRequests / totalRequests, time.now() - startTime);
+}
+
+function setProgressFake(value) {
+    previousState = 0;
+    nextState = value;
+
+    frameDelta = 1000 + Math.random() * 2500;
+    frameTime = time.now();
+    frameCount = 0;
+
+    requestAnimationFrame.cancel(requestId);
+    requestId = requestAnimationFrame(increment, requestProgress.element);
 }
 
 function setProgress(value, delta) {
@@ -64,7 +77,7 @@ function setProgress(value, delta) {
     frameCount = 0;
 
     requestAnimationFrame.cancel(requestId);
-    requestId = requestAnimationFrame(increment);
+    requestId = requestAnimationFrame(increment, requestProgress.element);
 }
 
 function increment(ms) {
@@ -79,10 +92,10 @@ function increment(ms) {
 
     if (currentState < 1) {
         requestAnimationFrame.cancel(requestId);
-        requestId = requestAnimationFrame(increment);
+        requestId = requestAnimationFrame(increment, requestProgress.element);
     } else {
         requestAnimationFrame.cancel(requestId);
-        setTimeout(end, 100);
+        setTimeout(end, requestProgress.endPauseTime);
     }
 }
 
@@ -94,6 +107,9 @@ function end() {
     }
 }
 
+
+requestProgress.element = null;
+requestProgress.endPauseTime = 250;
 
 requestProgress.startRequest = function() {
     requestStart();

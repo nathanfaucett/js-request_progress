@@ -38,7 +38,7 @@ router.route()
         setTimeout(function() {
             res.end(buffer);
             next();
-        }, Math.random() * 300);
+        }, 500 + Math.random() * 1000);
     })
     .post(function(req, res, next) {
         res.json(req.body);
