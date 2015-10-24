@@ -5,16 +5,14 @@ module.exports = function(grunt) {
             files: [
                 "Gruntfile.js",
                 "src/**/*.js",
-                "test/index.js",
-                "test/index.min.js",
-                "test/server.js"
+                "test/**/*.js"
             ]
         },
         jshint: {
             options: {
                 es3: true,
                 unused: true,
-                curly: false,
+                curly: true,
                 eqeqeq: true,
                 expr: true,
                 eqnull: true,
@@ -23,8 +21,7 @@ module.exports = function(grunt) {
             files: [
                 "Gruntfile.js",
                 "src/**/*.js",
-                "test/index.js",
-                "test/server.js"
+                "test/**/*.js"
             ]
         }
     });

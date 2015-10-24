@@ -7,28 +7,27 @@
     "url": "https://github.com/nathanfaucett/request_progress.git"
   },
   "main": "src/index.js",
+  "scripts": {
+    "example": "comn -f example/index.js -o example/index.min.js"
+  },
   "keywords": [
     "request_progress",
     "request_progress.js"
   ],
-  "scripts": {
-    "test": "comn -f test/index.js -o test/index.min.js"
-  },
   "author": "Nathan Faucett",
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-jsbeautifier": "^0.2.7",
-    "mocha": "^2.1.0"
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-jsbeautifier": "^0.2.10"
   },
   "dependencies": {
-    "time": "nathanfaucett/time",
-    "is_function": "nathanfaucett/is_function",
-    "event_emitter": "nathanfaucett/event_emitter",
-    "environment": "nathanfaucett/environment",
-    "xmlhttprequest_polyfill": "nathanfaucett/xmlhttprequest_polyfill",
-    "request_animation_frame": "nathanfaucett/request_animation_frame"
+    "time": "git://github.com/nathanfaucett/time.git",
+    "is_function": "git://github.com/nathanfaucett/is_function.git",
+    "event_emitter": "git://github.com/nathanfaucett/event_emitter.git",
+    "environment": "git://github.com/nathanfaucett/environment.git",
+    "xmlhttprequest_polyfill": "git://github.com/nathanfaucett/xmlhttprequest_polyfill.git",
+    "request_animation_frame": "git://github.com/nathanfaucett/request_animation_frame.git"
   }
 }
