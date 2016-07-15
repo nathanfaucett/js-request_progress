@@ -1,7 +1,7 @@
-var Cors = require("cors"),
-    BodyParser = require("body_parser"),
-    layers = require("layers"),
-    context = require("context"),
+var Cors = require("@nathanfaucett/cors"),
+    BodyParser = require("@nathanfaucett/body_parser"),
+    layers = require("@nathanfaucett/layers"),
+    context = require("@nathanfaucett/context"),
 
     router = new layers.Router(),
     server = new require("http").Server(function(req, res) {

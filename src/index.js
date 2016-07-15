@@ -1,8 +1,8 @@
-var time = require("time"),
-    isFunction = require("is_function"),
-    EventEmitter = require("event_emitter"),
-    XMLHttpRequestPolyfill = require("xmlhttprequest_polyfill"),
-    requestAnimationFrame = require("request_animation_frame");
+var now = require("@nathanfaucett/now"),
+    isFunction = require("@nathanfaucett/is_function"),
+    EventEmitter = require("@nathanfaucett/event_emitter"),
+    XMLHttpRequestPolyfill = require("@nathanfaucett/xmlhttprequest_polyfill"),
+    requestAnimationFrame = require("@nathanfaucett/request_animation_frame");
 
 
 var requestProgress = module.exports = new EventEmitter(),
@@ -44,13 +44,13 @@ function requestStart() {
         requestProgress.emit("start");
         setProgressFake(0.1);
     }
-    startTime = time.now();
+    startTime = now();
     totalRequests += 1;
 }
 
 function requestDone() {
     completedRequests += 1;
-    setProgress(completedRequests / totalRequests, time.now() - startTime);
+    setProgress(completedRequests / totalRequests, now() - startTime);
 }
 
 function setProgressFake(value) {
@@ -58,7 +58,7 @@ function setProgressFake(value) {
     nextState = value;
 
     frameDelta = 1000 + Math.random() * 2500;
-    frameTime = time.now();
+    frameTime = now();
     frameCount = 0;
 
     requestAnimationFrame.cancel(requestId);
@@ -73,7 +73,7 @@ function setProgress(value, delta) {
     currentDelta = delta;
 
     frameDelta = delta - previousDelta;
-    frameTime = time.now();
+    frameTime = now();
     frameCount = 0;
 
     requestAnimationFrame.cancel(requestId);
