@@ -1,6 +1,6 @@
 {
   "name": "@nathanfaucett/request_progress",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "xmlhttprequest progress for the browser",
   "repository": {
     "type": "git",
@@ -18,17 +18,18 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@nathanfaucett/comn": "0.0.1",
+    "@nathanfaucett/comn": "^0.0.11",
     "grunt": "^1.0.1",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-jsbeautifier": "^0.2.13"
   },
   "dependencies": {
-    "@nathanfaucett/now": "^0.0.2",
+    "@nathanfaucett/now": "^0.0.3",
+    "@nathanfaucett/clamp": "^0.0.1",
     "@nathanfaucett/is_function": "^0.0.1",
-    "@nathanfaucett/event_emitter": "^0.0.1",
-    "@nathanfaucett/environment": "^0.0.1",
-    "@nathanfaucett/xmlhttprequest_polyfill": "^0.0.1",
-    "@nathanfaucett/request_animation_frame": "^0.0.1"
+    "@nathanfaucett/event_emitter": "^0.0.3",
+    "@nathanfaucett/environment": "^0.0.2",
+    "@nathanfaucett/xmlhttprequest_polyfill": "^0.0.4",
+    "@nathanfaucett/request_animation_frame": "^0.0.4"
   }
 }

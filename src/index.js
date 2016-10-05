@@ -1,4 +1,5 @@
 var now = require("@nathanfaucett/now"),
+    clamp = require("@nathanfaucett/clamp"),
     isFunction = require("@nathanfaucett/is_function"),
     EventEmitter = require("@nathanfaucett/event_emitter"),
     XMLHttpRequestPolyfill = require("@nathanfaucett/xmlhttprequest_polyfill"),
@@ -30,10 +31,6 @@ var requestProgress = module.exports = new EventEmitter(),
 
 function lerp(a, b, t) {
     return a + (b - a) * t;
-}
-
-function clamp01(x) {
-    return x > 1 ? 1 : (x < 0 ? 0 : x);
 }
 
 function requestStart() {
@@ -87,7 +84,7 @@ function increment(ms) {
     frameTime = ms;
     frameCount += dt;
 
-    currentState = lerp(previousState, nextState, clamp01(frameCount / frameDelta));
+    currentState = lerp(previousState, nextState, clamp(frameCount / frameDelta), 0, 1);
     requestProgress.emit("update", currentState);
 
     if (currentState < 1) {

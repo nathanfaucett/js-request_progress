@@ -4,8 +4,7 @@
   "dependencies": {
     "@nathanfaucett/cors": "^0.0.1",
     "@nathanfaucett/body_parser": "^0.0.1",
-    "@nathanfaucett/layers": "^0.0.1",
-    "@nathanfaucett/context": "^0.0.1"
+    "@nathanfaucett/layers": "^0.0.3",
+    "@nathanfaucett/ri": "^0.0.2"
   }
 }
-
