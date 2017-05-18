@@ -54,7 +54,7 @@ function setProgressFake(value) {
     previousState = 0;
     nextState = value;
 
-    frameDelta = 1000 + Math.random() * 2500;
+    frameDelta = 1000 + (Math.random() * 2500);
     frameTime = now();
     frameCount = 0;
 
@@ -84,7 +84,7 @@ function increment(ms) {
     frameTime = ms;
     frameCount += dt;
 
-    currentState = lerp(previousState, nextState, clamp(frameCount / frameDelta), 0, 1);
+    currentState = lerp(previousState, nextState, clamp(frameCount / frameDelta, 0, 1));
     requestProgress.emit("update", currentState);
 
     if (currentState < 1) {

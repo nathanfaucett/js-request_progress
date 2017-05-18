@@ -1,6 +1,6 @@
 {
   "name": "@nathanfaucett/request_progress",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "xmlhttprequest progress for the browser",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "example": "comn -f ./example/index.js -o ./example/index.min.js"
+    "example": "comn -f ./example/src/index.js -o ./example/index.js"
   },
   "keywords": [
     "request_progress",
@@ -18,7 +18,11 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@nathanfaucett/comn": "^0.0.11",
+    "@nathanfaucett/cors": "^0.0.1",
+    "@nathanfaucett/body_parser": "^0.0.1",
+    "@nathanfaucett/layers": "^0.0.3",
+    "@nathanfaucett/ri": "^0.0.2",
+    "@nathanfaucett/comn": "^0.0.13",
     "grunt": "^1.0.1",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-jsbeautifier": "^0.2.13"
@@ -28,7 +32,6 @@
     "@nathanfaucett/clamp": "^0.0.1",
     "@nathanfaucett/is_function": "^0.0.1",
     "@nathanfaucett/event_emitter": "^0.0.3",
-    "@nathanfaucett/environment": "^0.0.2",
     "@nathanfaucett/xmlhttprequest_polyfill": "^0.0.4",
     "@nathanfaucett/request_animation_frame": "^0.0.4"
   }
